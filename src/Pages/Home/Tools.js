@@ -13,7 +13,7 @@ const Tools = ({ tool }) => {
                 <h4 className='font-semibold'>Quantity: {available} Piece</h4>
                 <h4 className='font-semibold'>Unit Price: {Uprice}</h4>
                 <div className=" text-center ">
-                    <button className="btn btn-primary">Details</button>
+                    <button className="btn btn-primary">Buy Now</button>
                 </div>
             </div>
         </div>
