@@ -5,6 +5,7 @@ import Navbar from '../Shared/Navbar';
 import Tool from './Tool';
 import BusinessSummery from './BusinessSummery';
 import HundredHandTools from './HundredHandTools';
+import NewsLetter from './NewsLetter';
 
 const Home = () => {
     return (
@@ -14,6 +15,7 @@ const Home = () => {
             <Tool></Tool>
             <HundredHandTools></HundredHandTools>
             <BusinessSummery></BusinessSummery>
+            <NewsLetter></NewsLetter>
             <Footer></Footer>
         </>
     );
