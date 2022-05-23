@@ -6,6 +6,7 @@ import Tool from './Tool';
 import BusinessSummery from './BusinessSummery';
 import HundredHandTools from './HundredHandTools';
 import NewsLetter from './NewsLetter';
+import Review from './Review';
 
 const Home = () => {
     return (
@@ -15,6 +16,7 @@ const Home = () => {
             <Tool></Tool>
             <HundredHandTools></HundredHandTools>
             <BusinessSummery></BusinessSummery>
+            <Review></Review>
             <NewsLetter></NewsLetter>
             <Footer></Footer>
         </>

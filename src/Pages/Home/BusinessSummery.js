@@ -4,7 +4,7 @@ const BusinessSummery = () => {
     return (
         <>
 
-            <h2 className='m-12 text-center text-xl font-semibold divider'>Business Summery</h2>
+            <h2 className='m-14 text-center text-xl font-semibold divider'>Business Summery</h2>
             <div className='text-center'>
                 <div className="stats shadow">
 
