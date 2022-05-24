@@ -1,12 +1,17 @@
 import React, { useEffect, useState } from 'react';
+import { useAuthState } from 'react-firebase-hooks/auth';
 import { useForm } from 'react-hook-form';
 import { useParams } from 'react-router-dom';
+import auth from '../firebase.init';
 
 
 const Purchase = () => {
     const { handleSubmit, register } = useForm();
     const { id } = useParams();
     const [item, setItem] = useState({});
+
+    const [user] = useAuthState(auth);
+
     useEffect(() => {
         fetch(`http://localhost:5000/tools/${id}`)
             .then(res => res.json())
@@ -42,6 +47,7 @@ const Purchase = () => {
                                 </label>
                                 <input
                                     type="text"
+                                    value={user.displayName}
                                     placeholder="Enter Your Name"
                                     className="input input-bordered w-full max-w-xs"
                                     {...register("name")}
@@ -54,6 +60,7 @@ const Purchase = () => {
                                 </label>
                                 <input
                                     type="email"
+                                    value={user.email}
                                     placeholder=" Enter Your Email"
                                     className="input input-bordered w-full max-w-xs"
                                     {...register("email")}
