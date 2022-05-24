@@ -5,13 +5,14 @@ const Purchase = () => {
     const { id } = useParams();
     const [item, setItem] = useState({});
     useEffect(() => {
-        fetch(`http://localhost:3000/purchase/${id}`)
-            // .then(res => res.json())
+        fetch(`http://localhost:5000/tools/${id}`)
+            .then(res => res.json())
             .then(data => setItem(data))
     }, [])
     return (
         <div>
-            <div className="card w-96 bg-base-100 shadow-xl">
+            <h2 className='text-xl font-semibold mt-12 divider'>PURCHASE TOOL</h2>
+            <div className="card w-96 bg-base-100 shadow-xl m-12">
                 <figure className="px-10 pt-10">
                     <img src={item.img} alt="" className="rounded-xl" />
                 </figure>
