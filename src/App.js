@@ -7,6 +7,7 @@ import Footer from './Pages/Shared/Footer';
 import Login from './Pages/Login';
 import Register from './Pages/Register';
 import Purchase from './Pages/Purchase';
+import RequireAuth from './Pages/RequireAuth';
 
 function App() {
   return (
@@ -17,7 +18,13 @@ function App() {
         <Route path='/*' element={<NotFound></NotFound>}></Route>
         <Route path='/login' element={<Login></Login>}></Route>
         <Route path='/register' element={<Register></Register>}></Route>
-        <Route path='/purchase/:id' element={<Purchase></Purchase>}></Route>
+        {/* <Route path='/purchase' element={<Purchase></Purchase>}></Route> */}
+        <Route path='/purchase/:id' element={
+          <RequireAuth>
+            <Purchase></Purchase>
+          </RequireAuth>}>
+
+        </Route>
       </Routes>
       <Footer></Footer>
     </div>
