@@ -5,6 +5,7 @@ import NotFound from './Pages/NotFound';
 import Navbar from './Pages/Shared/Navbar';
 import Footer from './Pages/Shared/Footer';
 import Login from './Pages/Login';
+import Register from './Pages/Register';
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
         <Route path='/' element={<Home></Home>}></Route>
         <Route path='/*' element={<NotFound></NotFound>}></Route>
         <Route path='/login' element={<Login></Login>}></Route>
+        <Route path='/register' element={<Register></Register>}></Route>
       </Routes>
       <Footer></Footer>
     </div>
