@@ -6,6 +6,7 @@ import Navbar from './Pages/Shared/Navbar';
 import Footer from './Pages/Shared/Footer';
 import Login from './Pages/Login';
 import Register from './Pages/Register';
+import Purchase from './Pages/Purchase';
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
         <Route path='/*' element={<NotFound></NotFound>}></Route>
         <Route path='/login' element={<Login></Login>}></Route>
         <Route path='/register' element={<Register></Register>}></Route>
+        <Route path='/purchase/:id' element={<Purchase></Purchase>}></Route>
       </Routes>
       <Footer></Footer>
     </div>
