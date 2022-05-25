@@ -6,11 +6,23 @@ const AddReview = () => {
 
     const onSubmit = (data) => {
         console.log(data);
+        const url = 'http://localhost:5000/review';
+        fetch(url, {
+            method: 'POST',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(data)
+        })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data);
+            })
     }
 
     return (
         <>
-            <h2 className='text-center text-3xl font-semibold'>ADD A REVIEW</h2>
+            <h2 className='text-center text-2xl font-semibold mt-5'>ADD A REVIEW</h2>
             <div className='flex justify-center items-center m-10'>
                 <div className="card w-96 bg-base-100 shadow-xl">
                     <div className="card-body">
