@@ -1,5 +1,7 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const AddReview = () => {
     const { handleSubmit, register } = useForm();
@@ -17,6 +19,7 @@ const AddReview = () => {
             .then(res => res.json())
             .then(data => {
                 console.log(data);
+                toast("Review Submitted");
             })
     }
 
@@ -52,6 +55,7 @@ const AddReview = () => {
                                     required
                                 />
                             </div>
+                            <ToastContainer />
                             <input className='mt-4 btn w-full max-w-xs text-white' type="submit" value="Submit" />
                         </form>
                     </div>
