@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 // import auth from '../../firebase.init';
 
 const UpdatedProfile = ({ profile }) => {
-    // console.log(profile);
+    console.log(profile);
     // const [user] = useAuthState(auth);
 
     return (
@@ -79,9 +79,11 @@ const UpdatedProfile = ({ profile }) => {
 
                                 />
                             </div>
-                            <Link to='/updateProfile'>
-                                <button className="btn btn-outline mt-2"> Update </button>
-                            </Link>
+                            <div className='text-center mt-5'>
+                                <Link to='/updateProfile'>
+                                    <button className="btn btn-outline "> Update </button>
+                                </Link>
+                            </div>
                         </form>
                     </div>
                 </div>

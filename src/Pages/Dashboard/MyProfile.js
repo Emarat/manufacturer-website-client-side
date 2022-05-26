@@ -1,14 +1,20 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import UpdatedProfile from './UpdatedProfile';
+import { useAuthState } from 'react-firebase-hooks/auth';
+import auth from '../../firebase.init';
 
 
 const MyProfile = () => {
     const [profiles, SetProfiles] = useState([]);
-    useState(() => {
-        fetch('http://localhost:5000/users')
-            .then(res => res.json())
-            .then(data => SetProfiles(data))
-    }, [])
+    const [user] = useAuthState(auth);
+
+    useEffect(() => {
+        if (user) {
+            fetch(`http://localhost:5000/user?email=${user.email}`)
+                .then(res => res.json())
+                .then(data => SetProfiles(data))
+        }
+    }, [user])
 
     return (
         <div>

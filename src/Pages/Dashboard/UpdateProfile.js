@@ -4,17 +4,19 @@ import { useForm } from 'react-hook-form';
 import auth from '../../firebase.init';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { useNavigate } from 'react-router-dom';
 
 const UpdateProfile = () => {
     const { handleSubmit, register } = useForm();
     const [user] = useAuthState(auth);
+    const navigate = useNavigate();
 
     const onSubmit = (data) => {
         const { name, email, address, university, department } = data;
         console.log(data);
         // const email = data.email;
         const currentUser = { email: email, name: name, address: address, university: university, department: department };
-        const url = `http://localhost:5000/user/${email}`;
+        const url = `http://localhost:5000/user/${user.email}`;
         if (email)
             fetch(url, {
                 method: 'PUT',
@@ -27,6 +29,7 @@ const UpdateProfile = () => {
                 .then(data => {
                     console.log(data);
                     toast("Profile Updated");
+                    navigate('/dashboard/profile');
                 })
 
     }
