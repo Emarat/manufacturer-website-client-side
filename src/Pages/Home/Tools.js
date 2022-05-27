@@ -18,7 +18,7 @@ const Tools = ({ tool }) => {
                 <h2 className="card-title">{name}</h2>
                 <p>{description}</p>
                 <h4 className='font-semibold'>Quantity: {available} Piece</h4>
-                <h4 className='font-semibold'>Unit Price: {Uprice}</h4>
+                <h4 className='font-semibold'>Unit Price: ${Uprice}</h4>
                 <div className=" text-center ">
                     <button onClick={() => navigateToPurchasePage(_id)} className="btn btn-primary">Buy Now</button>
                 </div>

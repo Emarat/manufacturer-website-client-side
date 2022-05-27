@@ -6,9 +6,11 @@ import auth from '../firebase.init';
 
 
 const Purchase = () => {
-    const { handleSubmit, register } = useForm();
+    const { handleSubmit, register, watch, formState: { errors } } = useForm();
     const { id } = useParams();
-    const [item, setItem] = useState({});
+    const [item, setItem] = useState('');
+
+    // console.log(item.name);
 
     const [user] = useAuthState(auth);
 
@@ -16,9 +18,19 @@ const Purchase = () => {
         fetch(`http://localhost:5000/tools/${id}`)
             .then(res => res.json())
             .then(data => setItem(data))
+
     }, [])
 
+
+    const Qty = watch("quantity");
+    const price = parseInt(item.Uprice * Qty).toString();
+    // console.log(price);
+
+
+
+
     const onSubmit = (data) => {
+        data.price = price;
         console.log(data);
     }
     return (
@@ -42,46 +54,32 @@ const Purchase = () => {
                         <form onSubmit={handleSubmit(onSubmit)}>
 
                             <div className="form-control w-full max-w-xs mt-2">
-                                <label class="label">
-                                    <span class="label-text">Name</span>
+                                <label className="label">
+                                    <span className="label-text">Name</span>
                                 </label>
                                 <input
                                     type="text"
                                     value={user.displayName}
-                                    placeholder="Enter Your Name"
                                     className="input input-bordered w-full max-w-xs"
                                     {...register("name")}
                                 />
                             </div>
 
                             <div className="form-control w-full max-w-xs mt-2">
-                                <label class="label">
-                                    <span class="label-text">Email</span>
+                                <label className="label">
+                                    <span className="label-text">Email</span>
                                 </label>
                                 <input
                                     type="email"
                                     value={user.email}
-                                    placeholder=" Enter Your Email"
                                     className="input input-bordered w-full max-w-xs"
                                     {...register("email")}
                                 />
                             </div>
-                            <div className="form-control w-full max-w-xs mt-2">
-                                <label class="label">
-                                    <span class="label-text">Phone Number</span>
-                                </label>
-                                <input
-                                    type="text"
-                                    placeholder="Enter Your Phone Number"
-                                    className="input input-bordered w-full max-w-xs"
-                                    {...register("phone")}
-                                    required
-                                />
 
-                            </div>
                             <div className="form-control w-full max-w-xs mt-2">
-                                <label class="label">
-                                    <span class="label-text">Address</span>
+                                <label className="label">
+                                    <span className="label-text">Address</span>
                                 </label>
                                 <input
                                     type="text"
@@ -93,30 +91,42 @@ const Purchase = () => {
 
                             </div>
                             <div className="form-control w-full max-w-xs mt-2">
-                                <label class="label">
-                                    <span class="label-text">Quantity</span>
+                                <label className="label">
+                                    <span className="label-text">Product Name</span>
                                 </label>
                                 <input
                                     type="text"
-                                    placeholder="Enter Product Quantity"
+                                    placeholder="Enter Product Name"
                                     className="input input-bordered w-full max-w-xs"
-                                    {...register("quantity")}
+                                    {...register("product")}
                                     required
                                 />
+
                             </div>
                             <div className="form-control w-full max-w-xs mt-2">
-                                <label class="label">
-                                    <span class="label-text">Price</span>
+                                <label className="label">
+                                    <span className="label-text">Quantity</span>
+                                </label>
+                                <input
+                                    type="number"
+                                    defaultValue={item.Mqty}
+                                    className="input input-bordered w-full max-w-xs"
+                                    {...register("quantity", { min: 10, max: 500 })}
+                                />
+                                {errors.quantity && "Quantity must be 10 or more & Less or equal to 500"}
+                            </div>
+                            <div className="form-control w-full max-w-xs mt-2">
+                                <label className="label">
+                                    <span className="label-text">Price</span>
                                 </label>
                                 <input
                                     type="text"
-                                    placeholder="Enter Product Quantity"
+                                    value={price}
                                     className="input input-bordered w-full max-w-xs"
-                                    {...register("quantity")}
-                                    required
+                                    {...register("price")}
                                 />
                             </div>
-                            <input className='mt-4 btn w-full max-w-xs text-white' type="submit" value="Place Order" />
+                            <input disabled={errors.quantity < 'min' || errors.quantity > 'max'} className='mt-4 btn w-full max-w-xs text-white' type="submit" value="Place Order" />
                         </form>
                     </div>
                 </div>
