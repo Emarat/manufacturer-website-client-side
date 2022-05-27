@@ -3,6 +3,8 @@ import { useAuthState } from 'react-firebase-hooks/auth';
 import { useForm } from 'react-hook-form';
 import { useParams } from 'react-router-dom';
 import auth from '../firebase.init';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 
 const Purchase = () => {
@@ -32,6 +34,19 @@ const Purchase = () => {
     const onSubmit = (data) => {
         data.price = price;
         console.log(data);
+        const url = 'http://localhost:5000/order';
+        fetch(url, {
+            method: 'POST',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(data)
+        })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data);
+                toast("Order Placed");
+            })
     }
     return (
         <>
@@ -126,6 +141,7 @@ const Purchase = () => {
                                     {...register("price")}
                                 />
                             </div>
+                            <ToastContainer />
                             <input disabled={errors.quantity < 'min' || errors.quantity > 'max'} className='mt-4 btn w-full max-w-xs text-white' type="submit" value="Place Order" />
                         </form>
                     </div>
