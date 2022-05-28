@@ -13,7 +13,23 @@ const MyOrders = () => {
                 .then(res => res.json())
                 .then(data => setOrders(data));
         }
-    }, [user])
+    }, [user]);
+
+    const deleteItem = (id) => {
+        const proceed = window.confirm('Are You Sure You Want To Cancel?')
+        if (proceed) {
+            const url = `http://localhost:5000/order/${id}`;
+            fetch(url, {
+                method: 'DELETE'
+            })
+                .then(res => res.json())
+                .then(data => {
+                    console.log('Deleted');
+                })
+        }
+        window.location.reload(false);
+    };
+
     return (
         <div>
             <h2>My Orders: {orders.length}</h2>
@@ -26,23 +42,27 @@ const MyOrders = () => {
                             <th>Product Name</th>
                             <th>Quantity</th>
                             <th>Total Price</th>
+                            <th>TransactionID</th>
                             <th></th>
                         </tr>
                     </thead>
                     <tbody>
                         {
-                            orders.map((order, index) => <tr>
-                                <th>{index + 1}</th>
-                                <td>{order.product}</td>
-                                <td>{order.quantity}</td>
-                                <td>{order.price}</td>
-                                <th>
-                                    {(order.price && !order.paid) &&
-                                        <Link to={`/dashboard/payment/${order._id}`}><button className="btn btn-success btn-xs">Pay</button></Link>}
-                                    {(order.price && order.paid) && <span className=" text-success">Paid</span>}
-
-                                </th>
-                            </tr>)
+                            orders.map((order, index) =>
+                                <tr key={order._id}>
+                                    <th>{index + 1}</th>
+                                    <td>{order.product}</td>
+                                    <td>{order.quantity}</td>
+                                    <td>{order.price}</td>
+                                    <td>{order.transactionId}</td>
+                                    <th>
+                                        {(order.price && !order.paid) &&
+                                            <Link to={`/dashboard/payment/${order._id}`}><button className="btn btn-success btn-xs">Pay</button></Link>} <br />
+                                        {(order.price && !order.paid) &&
+                                            <button onClick={() => deleteItem(order._id)} className="btn btn-success btn-xs">Cancel</button>}
+                                        {(order.price && order.paid) && <span className=" text-success">Paid</span>}
+                                    </th>
+                                </tr>)
                         }
                     </tbody>
                 </table>
