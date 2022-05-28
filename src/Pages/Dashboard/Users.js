@@ -4,7 +4,7 @@ import Loading from '../Shared/Loading';
 import UserRow from './UserRow';
 
 const Users = () => {
-    const { data: users, isLoading } = useQuery('users', () => fetch('http://localhost:5000/user').then(res => res.json()));
+    const { data: users, isLoading, refetch } = useQuery('users', () => fetch('http://localhost:5000/user').then(res => res.json()));
     if (isLoading) {
         return <Loading></Loading>
     }
@@ -18,7 +18,8 @@ const Users = () => {
                             <th></th>
                             <th>Name</th>
                             <th>Email</th>
-                            <th>Address</th>
+                            <th></th>
+                            <th></th>
                         </tr>
                     </thead>
                     <tbody>
@@ -27,6 +28,7 @@ const Users = () => {
                                 key={user._id}
                                 user={user}
                                 index={index}
+                                refetch={refetch}
                             ></UserRow>)
                         }
                     </tbody>
