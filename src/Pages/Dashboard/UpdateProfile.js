@@ -30,7 +30,7 @@ const UpdateProfile = () => {
                 .then(data => {
                     console.log(data);
                     toast("Profile Updated");
-                    navigate('/dashboard/profile');
+                    navigate('/dashboard');
                 })
         }
 
