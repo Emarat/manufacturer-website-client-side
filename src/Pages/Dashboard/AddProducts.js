@@ -8,7 +8,7 @@ const AddProducts = () => {
 
     const onSubmit = (data) => {
         console.log(data);
-        const url = 'http://localhost:5000/tool';
+        const url = 'https://dry-caverns-89338.herokuapp.com/tool';
         fetch(url, {
             method: 'POST',
             headers: {

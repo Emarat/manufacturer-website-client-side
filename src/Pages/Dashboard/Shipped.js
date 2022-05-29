@@ -5,7 +5,7 @@ const Shipped = ({ order, refetch, index }) => {
     const { email, paid, name, product, available, Mqty, Uprice } = order;
 
     const shipItem = () => {
-        fetch(`http://localhost:5000/order/shipped/${email}`, {
+        fetch(`https://dry-caverns-89338.herokuapp.com/order/shipped/${email}`, {
             method: 'PUT',
             headers: {
                 authorization: `Bearer ${localStorage.getItem('accessToken')}`

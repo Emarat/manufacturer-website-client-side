@@ -31,7 +31,7 @@ const Navbar = () => {
         </li>
     </>
     return (
-        <div className="navbar">
+        <div className="navbar top-0 sticky z-50 w-100">
             <div className="navbar-start">
                 <div className="dropdown">
                     <label tabIndex="0" className="btn btn-ghost lg:hidden">
@@ -41,7 +41,7 @@ const Navbar = () => {
                         {menuItem}
                     </ul>
                 </div>
-                <a className="btn btn-ghost normal-case text-xl">Emarat Tools Manufacturer L.</a>
+                <Link to='/home' className="btn btn-ghost normal-case text-xl">Emarat Tools Manufacturer L.</Link>
             </div>
             <div className="navbar-center hidden lg:flex">
                 <ul className="menu menu-horizontal p-0">

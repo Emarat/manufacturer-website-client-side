@@ -11,7 +11,7 @@ const MyOrders = () => {
 
     useEffect(() => {
         if (user) {
-            fetch(`http://localhost:5000/order?email=${user.email}`, {
+            fetch(`https://dry-caverns-89338.herokuapp.com/order?email=${user.email}`, {
                 method: 'GET',
                 headers: {
                     'authorization': `Bearer ${localStorage.getItem('accessToken')}`
@@ -36,7 +36,7 @@ const MyOrders = () => {
     const deleteItem = (id) => {
         const proceed = window.confirm('Are You Sure You Want To Cancel?')
         if (proceed) {
-            const url = `http://localhost:5000/order/${id}`;
+            const url = `https://dry-caverns-89338.herokuapp.com/order/${id}`;
             fetch(url, {
                 method: 'DELETE'
             })
@@ -62,6 +62,7 @@ const MyOrders = () => {
                             <th>Total Price</th>
                             <th>TransactionID</th>
                             <th></th>
+                            <th>Status</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -75,10 +76,14 @@ const MyOrders = () => {
                                     <td>{order.transactionId}</td>
                                     <th>
                                         {(order.price && !order.paid) &&
-                                            <Link to={`/dashboard/payment/${order._id}`}><button className="btn btn-success btn-xs">Pay</button></Link>} <br />
+                                            <Link to={`/dashboard/payment/${order._id}`}><button className="btn btn-success btn-xs">Pay</button></Link>}
                                         {(order.price && !order.paid) &&
                                             <button onClick={() => deleteItem(order._id)} className="btn btn-success btn-xs">Cancel</button>}
                                         {(order.price && order.paid) && <span className=" text-success">Paid</span>}
+                                    </th>
+                                    <th>
+                                        {(order.price && order.status) && <span className=" text-success">Shipped</span>}
+                                        {(order.paid && !order.status) && <span className=" text-success">Pending</span>}
                                     </th>
                                 </tr>)
                         }

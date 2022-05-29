@@ -11,7 +11,7 @@ const Payment = () => {
     const { id } = useParams();
     const [orders, setOrders] = useState([]);
 
-    const url = `http://localhost:5000/order/${id}`;
+    const url = `https://dry-caverns-89338.herokuapp.com/order/${id}`;
     useEffect(() => {
         fetch(url)
             .then(res => res.json())

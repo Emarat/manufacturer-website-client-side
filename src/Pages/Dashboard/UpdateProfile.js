@@ -16,7 +16,7 @@ const UpdateProfile = () => {
         console.log(data);
         // const email = data.email;
         const currentUser = { email: email, name: name, address: address, university: university, department: department };
-        const url = `http://localhost:5000/user/${user.email}`;
+        const url = `https://dry-caverns-89338.herokuapp.com/user/${user.email}`;
         if (email) {
             fetch(url, {
                 method: 'PUT',

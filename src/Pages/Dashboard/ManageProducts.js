@@ -10,7 +10,7 @@ const ManageProducts = () => {
 
     useEffect(() => {
 
-        fetch(`http://localhost:5000/tools`, {
+        fetch(`https://dry-caverns-89338.herokuapp.com/tools`, {
             method: 'GET',
             headers: {
                 'authorization': `Bearer ${localStorage.getItem('accessToken')}`
@@ -34,7 +34,7 @@ const ManageProducts = () => {
     const deleteItem = (id) => {
         const proceed = window.confirm('Are You Sure You Want To Cancel?')
         if (proceed) {
-            const url = `http://localhost:5000/tools/${id}`;
+            const url = `https://dry-caverns-89338.herokuapp.com/tools/${id}`;
             fetch(url, {
                 method: 'DELETE'
             })

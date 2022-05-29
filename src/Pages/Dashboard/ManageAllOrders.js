@@ -8,11 +8,11 @@ import 'react-toastify/dist/ReactToastify.css';
 const ManageAllOrders = () => {
     const [orders, setOrders] = useState([]);
     const [user] = useAuthState(auth);
-    console.log(orders);
+    // console.log(orders);
 
     useEffect(() => {
 
-        fetch(`http://localhost:5000/orders`, {
+        fetch(`https://dry-caverns-89338.herokuapp.com/orders`, {
             method: 'GET',
             headers: {
                 'authorization': `Bearer ${localStorage.getItem('accessToken')}`
@@ -28,7 +28,7 @@ const ManageAllOrders = () => {
     const deleteItem = (id) => {
         const proceed = window.confirm('Are You Sure You Want To Cancel?')
         if (proceed) {
-            const url = `http://localhost:5000/order/${id}`;
+            const url = `https://dry-caverns-89338.herokuapp.com/order/${id}`;
             fetch(url, {
                 method: 'DELETE'
             })
@@ -41,7 +41,7 @@ const ManageAllOrders = () => {
     };
 
     const shippedItem = (id) => {
-        const url = `http://localhost:5000/orders/${id}`;
+        const url = `https://dry-caverns-89338.herokuapp.com/orders/${id}`;
         fetch(url, {
             method: 'PUT',
             headers: {

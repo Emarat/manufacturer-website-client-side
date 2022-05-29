@@ -12,7 +12,7 @@ const MyProfile = () => {
 
     useEffect(() => {
         if (user) {
-            fetch(`http://localhost:5000/user/${user.email}`, {
+            fetch(`https://dry-caverns-89338.herokuapp.com/user/${user.email}`, {
                 method: 'GET',
                 headers: {
                     'content-type': 'application/json',

@@ -17,7 +17,7 @@ const Purchase = () => {
     const [user] = useAuthState(auth);
 
     useEffect(() => {
-        fetch(`http://localhost:5000/tools/${id}`)
+        fetch(`https://dry-caverns-89338.herokuapp.com/tools/${id}`)
             .then(res => res.json())
             .then(data => setItem(data))
 
@@ -34,7 +34,7 @@ const Purchase = () => {
     const onSubmit = (data) => {
         data.price = price;
         console.log(data);
-        const url = 'http://localhost:5000/order';
+        const url = 'https://dry-caverns-89338.herokuapp.com/order';
         fetch(url, {
             method: 'POST',
             headers: {
