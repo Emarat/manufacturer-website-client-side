@@ -88,7 +88,7 @@ const AddProducts = () => {
                                     type="text"
                                     placeholder="Enter Price"
                                     className="input input-bordered w-full max-w-xs"
-                                    {...register("uprice")}
+                                    {...register("Uprice")}
                                     required
                                 />
 
