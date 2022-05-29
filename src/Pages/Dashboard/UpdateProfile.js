@@ -17,11 +17,12 @@ const UpdateProfile = () => {
         // const email = data.email;
         const currentUser = { email: email, name: name, address: address, university: university, department: department };
         const url = `http://localhost:5000/user/${user.email}`;
-        if (email)
+        if (email) {
             fetch(url, {
                 method: 'PUT',
                 headers: {
-                    'content-type': 'application/json'
+                    'content-type': 'application/json',
+
                 },
                 body: JSON.stringify(currentUser)
             })
@@ -31,6 +32,8 @@ const UpdateProfile = () => {
                     toast("Profile Updated");
                     navigate('/dashboard/profile');
                 })
+        }
+
 
     }
     return (

@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 // import auth from '../../firebase.init';
 
 const UpdatedProfile = ({ profile }) => {
-    console.log(profile);
+    // console.log(profile);
     // const [user] = useAuthState(auth);
 
     return (

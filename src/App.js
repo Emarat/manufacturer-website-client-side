@@ -17,6 +17,8 @@ import Blogs from './Pages/Home/Blogs';
 import MyPortfolio from './Pages/Home/MyPortfolio';
 import Payment from './Pages/Dashboard/Payment';
 import Users from './Pages/Dashboard/Users';
+import RequireAdmin from './Pages/RequireAdmin';
+import AddProducts from './Pages/Dashboard/AddProducts';
 
 function App() {
   return (
@@ -43,7 +45,8 @@ function App() {
           <Route index element={<MyOrders></MyOrders>}></Route>
           <Route path='addreview' element={<AddReview></AddReview>}></Route>
           <Route path='profile' element={<MyProfile></MyProfile>}></Route>
-          <Route path="users" element={<Users></Users>}></Route>
+          <Route path="users" element={<RequireAdmin><Users></Users></RequireAdmin>}></Route>
+          <Route path="addProducts" element={<RequireAdmin><AddProducts></AddProducts></RequireAdmin>}></Route>
           <Route path='payment/:id' element={<Payment></Payment>}></Route>
         </Route>
       </Routes>
