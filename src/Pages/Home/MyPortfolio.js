@@ -83,7 +83,7 @@ const MyPortfolio = () => {
                         <div className="form-control w-full max-w-xs mt-2">
 
                             {/* <!-- The button to open modal --> */}
-                            <label for="my-modal-6" class="btn modal-button">Skills</label>
+                            <label htmlFor="my-modal-6" class="btn modal-button">Skills</label>
 
                             {/* <!-- Put this part before </body> tag --> */}
                             <input type="checkbox" id="my-modal-6" class="modal-toggle" />
@@ -103,7 +103,7 @@ const MyPortfolio = () => {
                                     </ul>
 
                                     <div class="modal-action">
-                                        <label for="my-modal-6" class="btn">X</label>
+                                        <label htmlFor="my-modal-6" class="btn">X</label>
                                     </div>
                                 </div>
                             </div>

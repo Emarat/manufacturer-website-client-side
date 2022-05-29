@@ -7,10 +7,18 @@ import auth from '../../firebase.init';
 const MyProfile = () => {
     const [profiles, SetProfiles] = useState([]);
     const [user] = useAuthState(auth);
+    console.log(user);
+    console.log(profiles);
 
     useEffect(() => {
         if (user) {
-            fetch(`http://localhost:5000/user?email=${user.email}`)
+            fetch(`http://localhost:5000/user/${user.email}`, {
+                method: 'GET',
+                headers: {
+                    'content-type': 'application/json',
+                    authorization: `Bearer ${localStorage.getItem('accessToken')}`
+                }
+            })
                 .then(res => res.json())
                 .then(data => SetProfiles(data))
         }
@@ -18,14 +26,9 @@ const MyProfile = () => {
 
     return (
         <div>
-            {
-                profiles.map(profile =>
-                    <UpdatedProfile
-                        key={profile._id}
-                        profile={profile}
-                    ></UpdatedProfile>
-                )
-            }
+            <UpdatedProfile
+                profiles={profiles} >
+            </UpdatedProfile>
         </div>
     );
 };

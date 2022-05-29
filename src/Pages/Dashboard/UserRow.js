@@ -32,8 +32,8 @@ const UserRow = ({ user, refetch, index }) => {
             <td>{name}</td>
             <td>{email}</td>
             <ToastContainer />
-            <td>{role !== 'admin' && <button onClick={makeAdmin} class="btn btn-xs">Make Admin</button>}</td>
-            <td><button class="btn btn-xs">Remove User</button></td>
+            <td>{role !== 'admin' && <button onClick={makeAdmin} className="btn btn-xs">Make Admin</button>}</td>
+            <td><button className="btn btn-xs">Remove User</button></td>
         </tr>
     );
 };

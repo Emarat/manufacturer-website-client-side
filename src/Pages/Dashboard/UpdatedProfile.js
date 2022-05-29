@@ -3,7 +3,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 // import auth from '../../firebase.init';
 
-const UpdatedProfile = ({ profile }) => {
+const UpdatedProfile = ({ profiles }) => {
     // console.log(profile);
     // const [user] = useAuthState(auth);
 
@@ -22,7 +22,7 @@ const UpdatedProfile = ({ profile }) => {
                                 </label>
                                 <input
                                     type="text"
-                                    value={profile.name}
+                                    value={profiles.name}
                                     // placeholder="Enter Your Name"
                                     className="input input-bordered w-full max-w-xs"
                                     readOnly
@@ -36,7 +36,7 @@ const UpdatedProfile = ({ profile }) => {
                                 </label>
                                 <input
                                     type="email"
-                                    value={profile.email}
+                                    value={profiles.email}
                                     // placeholder=" Enter Your Email"
                                     className="input input-bordered w-full max-w-xs"
                                     readOnly
@@ -49,7 +49,7 @@ const UpdatedProfile = ({ profile }) => {
                                 </label>
                                 <input
                                     type="text"
-                                    value={profile.university}
+                                    value={profiles.university}
                                     className="input input-bordered w-full max-w-xs"
                                     readOnly
 
@@ -61,7 +61,7 @@ const UpdatedProfile = ({ profile }) => {
                                 </label>
                                 <input
                                     type="text"
-                                    value={profile.department}
+                                    value={profiles.department}
                                     className="input input-bordered w-full max-w-xs"
                                     readOnly
 
@@ -73,7 +73,7 @@ const UpdatedProfile = ({ profile }) => {
                                 </label>
                                 <input
                                     type="text"
-                                    value={profile.address}
+                                    value={profiles.address}
                                     className="input input-bordered w-full max-w-xs"
                                     readOnly
 
